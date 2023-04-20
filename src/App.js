@@ -1,25 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
-
+import Login from './components/login/Login';
+import Register from './components/register/Register'
+import { auth } from './components/firebase';
+import { useEffect, useState } from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import Home from './components/home/Home';
+import About from './components/about/About';
+import ForgetPassword from './components/forgetPassword/ForgetPassword';
+import ZoomVideo from './components/zoomVideo/ZoomVideo'
 function App() {
+
+    const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        setUser(user)
+      } else {
+        setUser(null)
+      }
+    })
+
+    return unsubscribe;
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route path='/' element={<Home user={user} />} />
+      <Route path='/about' element={user ? <About /> : <Navigate to='/login' />} />
+      <Route path='/about/news/:id' element={<ZoomVideo/>} />
+      <Route path="/login" element={user ? <Navigate to='/about' /> : <Login />} />
+      <Route path="/register" element={user ? <Navigate to='/login' /> : <Register />} />
+      <Route path="/forgetPassword" element={user ? <Navigate to='/login' /> : <ForgetPassword />} />
+  </Routes>
   );
 }
 
 export default App;
+
+
+
+
+
+

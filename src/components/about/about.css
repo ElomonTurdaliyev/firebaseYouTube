@@ -1,0 +1,43 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.about-div {
+    position: absolute;
+    top: 20px;
+    right: 7.5px;
+    z-index: 2;
+}
+.dMode {
+    width: 32px;
+    height: 16px;
+    border-radius: 10px;
+    display: flex;
+    border: 1px solid black;
+    background-color: rgba(10, 10, 27, 0.5);
+}
+.dMode1 {
+    width: 15px;
+    height: 15px;
+    background-color: white;
+    border-radius: 50%;
+}
+.dMode2 {
+    width: 15px;
+    height: 15px;
+    background-color: black;
+    border-radius: 50%;
+    visibility: hidden;
+}
+.darkMode {
+    background-color: rgba(25, 25, 25, 0.5);
+    color: white;
+}
+.darkMode .dMode1 {
+    visibility: hidden;
+}
+.darkMode .dMode2 {
+    visibility: visible;
+}

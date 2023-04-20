@@ -1,0 +1,44 @@
+.showMore img {
+    transform: rotate(180deg);
+}
+.showMore {
+    background-color: #7b777743;
+    cursor: pointer;
+}
+.showMore + div {
+    visibility: hidden;
+}
+.iframe1 {
+    width: 160px;
+    height: 120px;
+}
+.iframe2 {
+    width: 360px;
+    height: 220px;
+}
+
+.scale:hover {
+    transform: scale(130%);
+    transition: 0.3s;
+}
+
+.show__text {
+    margin-bottom: 0;
+}
+.divv {
+    height: 100px;
+    border-top: 1px solid black;
+    margin-top: 10px;
+}
+.img-main {
+    width: 40px;
+}
+
+@media (max-width: 768px) {
+    .iframe1 {
+        max-width: 560px;
+        width: 100%;
+        height: 250px;
+    }
+}
+
